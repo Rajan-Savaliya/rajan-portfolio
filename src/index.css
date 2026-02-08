@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   RAJAN SAVALIYA PORTFOLIO - DESIGN SYSTEM
+   All colors are HSL for proper theming
+   ============================================ */
+
+@layer base {
+  :root {
+    /* Light Mode - Clean & Professional */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 263 70% 50%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.75rem;
+
+    /* Custom portfolio tokens - Light */
+    --gradient-start: 221 83% 53%;
+    --gradient-end: 263 70% 50%;
+    --glass-bg: 0 0% 100% / 0.8;
+    --glass-border: 0 0% 0% / 0.05;
+    --card-shadow: 215 25% 27% / 0.1;
+    --card-hover-shadow: 215 25% 27% / 0.15;
+    --tech-badge-bg: 221 83% 97%;
+    --tech-badge-text: 221 83% 40%;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5% 26%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 221 83% 53%;
+  }
+
+  .dark {
+    /* Dark Mode - Premium Navy */
+    --background: 230 25% 5%;
+    --foreground: 210 40% 96%;
+
+    --card: 230 25% 8%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 230 25% 8%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 230 25% 5%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 263 70% 60%;
+    --accent-foreground: 210 40% 96%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
+
+    /* Custom portfolio tokens - Dark */
+    --gradient-start: 217 91% 60%;
+    --gradient-end: 263 70% 60%;
+    --glass-bg: 0 0% 100% / 0.03;
+    --glass-border: 0 0% 100% / 0.08;
+    --card-shadow: 217 91% 60% / 0.1;
+    --card-hover-shadow: 217 91% 60% / 0.2;
+    --tech-badge-bg: 217 33% 15%;
+    --tech-badge-text: 217 91% 70%;
+
+    /* Sidebar - Dark */
+    --sidebar-background: 230 25% 7%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 230 25% 5%;
+    --sidebar-accent: 217 33% 15%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply backdrop-blur-xl border transition-all duration-300;
+    background: hsl(var(--glass-bg));
+    border-color: hsl(var(--glass-border));
+  }
+
+  .glass-card:hover {
+    box-shadow: 0 0 30px hsl(var(--card-hover-shadow));
+    transform: translateY(-2px);
+  }
+
+  /* Tech badge styling */
+  .tech-badge {
+    @apply px-3 py-1 rounded-full text-xs font-medium transition-colors;
+    background: hsl(var(--tech-badge-bg));
+    color: hsl(var(--tech-badge-text));
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+  }
+
+  /* Gradient background */
+  .gradient-bg {
+    background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+  }
+
+  /* Section heading underline */
+  .section-heading {
+    @apply relative inline-block;
+  }
+
+  .section-heading::after {
+    content: '';
+    @apply absolute left-0 -bottom-2 h-1 w-16 rounded-full;
+    background: linear-gradient(90deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+  }
+
+  /* Animated underline for links */
+  .nav-link {
+    @apply relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 bottom-0 h-0.5 w-0 transition-all duration-300;
+    background: linear-gradient(90deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  /* Typing cursor */
+  .typing-cursor {
+    @apply inline-block w-0.5 h-8 ml-1 animate-pulse;
+    background: hsl(var(--primary));
+  }
+
+  /* Premium button gradient */
+  .btn-gradient {
+    @apply relative overflow-hidden transition-all duration-300;
+    background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+  }
+
+  .btn-gradient:hover {
+    @apply scale-105;
+    box-shadow: 0 10px 30px -10px hsl(var(--primary) / 0.5);
+  }
+
+  /* Timeline line */
+  .timeline-line {
+    @apply absolute left-4 top-0 h-full w-0.5;
+    background: linear-gradient(180deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)), transparent);
+  }
+
+  /* Stat counter animation */
+  @keyframes countUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-count {
+    animation: countUp 0.6s ease-out forwards;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for horizontal scroll */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Premium shadow for cards */
+  .shadow-premium {
+    box-shadow: 0 4px 20px -5px hsl(var(--card-shadow)),
+                0 0 0 1px hsl(var(--glass-border));
+  }
+
+  /* Glow effect for dark mode */
+  .glow-primary {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.15);
+  }
+}
